@@ -34,8 +34,7 @@ public class ArticleController {
 	@GetMapping("/{id}")
 	public ArticleDto details(@PathVariable Long id) {
 		ArticleDto articleDto = articleService.articleForId(id);
-		if (StringUtils.isEmpty(articleDto)
-				|| StringUtils.isEmpty(articleDto.getId())) {
+		if (articleDto == null || articleDto.getId() == null) {
 			throw new ArticleNotFoundException();
 		}
 		return articleDto;
